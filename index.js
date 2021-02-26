@@ -29,7 +29,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 // 회원가입을 위한 route
-app.post("/api/user/register", (req, res) => {
+app.post("/api/users/register", (req, res) => {
   // 회원가입 시 필요한 정보들을 client에서 가져오면 (req by User.js)
   // 그것들을 db에 넣어준다
 
@@ -48,7 +48,7 @@ app.post("/api/user/register", (req, res) => {
 });
 
 //login route
-app.post("/api/user/login", (req, res) => {
+app.post("/api/users/login", (req, res) => {
   // 1) 요청된 이메일을 db에서 있는지 찾기
   // mongoDB제공 메소드 사용 + const user = new User(req.body); 과정을 같이 진행시켜준듯
   User.findOne({ email: req.body.email }, (err, user) => {
@@ -87,6 +87,34 @@ app.post("/api/user/login", (req, res) => {
     });
   });
 });
+// express에서 제공하는 Router를 사용해서 정리해야함 by  '/api/user..', '/api/product...', comment
+// auth라는 middleware(중간에서 무언가 해줌)
+// (role 1 admin, role 0 user)
+const { auth } = require('./middleware/auth.js')
+app.get('/api/users/auth', auth, (req, res) => {
+  //여기 까지 미들웨어 통과했다는 얘기는 auth가 true
+  res.status(200).json({
+    _id: req.user._id,
+    isAdmin: req.user.role === 0 ? false : true,
+    isAuth: true,
+    email: req.user.email,
+    name: req.user.name,
+    role: req.user.role,
+    lastname: req.user.lastname,
+    image: req.user.image
+  })
+})
 
-app.post('/')
+//logout route
+app.get('/api/users/logout', auth, (req, res) => {
+  //로그아웃 하려는 유저를 db에서 찾기
+  //찾아서 업데이트해주는 메소드 + auth middleware에서 req.user._id 찾아오기
+  User.findOneAndUpdate({_id: req.user._id}, { token: ""}, (err, user) => {
+    if(err) return res.json({success: false, err})
+    return res.status(200).send({
+      success: true
+    });
+  });
+});
+
 app.listen(port, () => console.log(`Example app listening on port ${port}`));

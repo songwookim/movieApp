@@ -80,7 +80,7 @@ userSchema.methods.generateToken = function (callback_func) {
 
   // jwt를 이용해서 token 생성하기
   // user._id + 'x_auth' = token, 나중에 user._id를 찾을 때 'x_auth' 을 이용해서 찾을 수 있음
-  var token = jwt.sign(user._id.toHexString(),'x_auth');
+  var token = jwt.sign(user._id.toHexString(),'secret');
 
   user.token = token;
   user.save(function(err, user) {
@@ -88,6 +88,23 @@ userSchema.methods.generateToken = function (callback_func) {
     //db에 save잘 되었다면 user정보만 넘기기
     callback_func(null, user)
   })
+ }
+
+ userSchema.statics.findByToken = function(token, callback_func) {
+   var user = this;
+
+   // 토큰 decode, decoded = userId
+   // jwt 홈페이지에 verify 사용하는 방법 참고
+   jwt.verify(token, 'secret', function(err, decoded) {
+    //유저 아이디를 이용해 유저를 찾은 뒤
+    //client에서 가져온 token과 db에 보관된 토큰 일치하는지 확인
+
+    //monogoDB 메소드 이용해서 userId와 token을 이용해 찾기
+    user.findOne({"_id": decoded, "token": token}, function(err,user){
+      if(err) return callback_func(err);
+      callback_func(null, user)
+    })
+   })
  }
 const User = mongoose.model("User", userSchema);
 
