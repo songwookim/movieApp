@@ -62,6 +62,33 @@ userSchema.pre("save", function (next) {
   }
 });
 
+
+userSchema.methods.comparePassword = function (plainPassword,callback_func) {
+  //plainPassword 12345   this.password @#!@r512r13rdsd
+  //왜냐? 지금 userSchema는 DB에서 이메일로 찾아낸 user이기에 this.password가 암호화된 패스워드임
+  //plainPassword는 index.js에서 넘긴 req.body.password
+  bcrypt.compare(plainPassword, this.password, function (err, isMatch) {
+    //비밀번호가 같지 않다면
+    if (err) return callback_func(err);
+    callback_func(null, isMatch);
+  });
+};
+
+const jwt = require('jsonwebtoken')
+userSchema.methods.generateToken = function (callback_func) {
+  var user = this;
+
+  // jwt를 이용해서 token 생성하기
+  // user._id + 'x_auth' = token, 나중에 user._id를 찾을 때 'x_auth' 을 이용해서 찾을 수 있음
+  var token = jwt.sign(user._id.toHexString(),'x_auth');
+
+  user.token = token;
+  user.save(function(err, user) {
+    if(err) return callback_func(err)
+    //db에 save잘 되었다면 user정보만 넘기기
+    callback_func(null, user)
+  })
+ }
 const User = mongoose.model("User", userSchema);
 
 module.exports = { User }; //model을 다른 곳에서 사용할 수 있게 함
