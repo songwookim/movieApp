@@ -1,7 +1,7 @@
 const express = require("express");
 // expresss 모듈을 node_modules로 부터 갖고 온다.
 const app = express();
-const port = 5000;
+
 const config = require("./config/key");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
@@ -117,4 +117,9 @@ app.get('/api/users/logout', auth, (req, res) => {
   });
 });
 
+app.get('/api/hello', (req,res)=> {
+  res.send("Hello World!");
+});
+
+const port = 5000;
 app.listen(port, () => console.log(`Example app listening on port ${port}`));
