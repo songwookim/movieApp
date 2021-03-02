@@ -3,11 +3,25 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import 'antd/dist/antd.css';
+import { Provider } from 'react-redux';
+import { applyMiddleware, createStore } from 'redux';
+import promiseMiddleware from 'redux-promise';
+import ReduxThunk from 'redux-thunk';
+
+import Reducer from './_reducers'
+
+// 그냥 createStore하면 obj형식으로 밖에 못 받으니 promise,thunk middleware도 적용한다.
+const createStoreWithMiddleware =  applyMiddleware(promiseMiddleware, ReduxThunk)(reateStore);
 
 ReactDOM.render(
-  <React.StrictMode>
+  //redux연결 + 브라우저의 확장앱 redux_devvtools랑 연결
+  <Provider store={createStoreWithMiddleware(Reducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ &&
+    window.__REDUX_DEVTOOLS_EXTENSION__()
+  )}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
