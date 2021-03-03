@@ -48,7 +48,7 @@ app.post("/api/users/register", (req, res) => {
 });
 
 //login route
-app.post("/api/users/login", (req, res) => {
+app.post('/api/users/login', (req, res) => {
   // 1) 요청된 이메일을 db에서 있는지 찾기
   // mongoDB제공 메소드 사용 + const user = new User(req.body); 과정을 같이 진행시켜준듯
   User.findOne({ email: req.body.email }, (err, user) => {
@@ -78,7 +78,7 @@ app.post("/api/users/login", (req, res) => {
         res
           .cookie("x_auth", user.token)
           //성공했다는 표시
-          .status(400)
+          .status(200)
           .json({
             loginSuccess: true,
             userId: user._id,

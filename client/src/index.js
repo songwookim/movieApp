@@ -12,7 +12,7 @@ import ReduxThunk from 'redux-thunk';
 import Reducer from './_reducers'
 
 // 그냥 createStore하면 obj형식으로 밖에 못 받으니 promise,thunk middleware도 적용한다.
-const createStoreWithMiddleware =  applyMiddleware(promiseMiddleware, ReduxThunk)(reateStore);
+const createStoreWithMiddleware =  applyMiddleware(promiseMiddleware, ReduxThunk)(createStore);
 
 ReactDOM.render(
   //redux연결 + 브라우저의 확장앱 redux_devvtools랑 연결
