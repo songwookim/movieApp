@@ -21,7 +21,6 @@ export function registerUser(dataToSubmit) {
     const req = axios.post('/api/users/register', dataToSubmit)
     .then(res=> res.data)
 
-    //Reducer에 저장함.
     return {
         type: REGISTER_USER,
         payload: req

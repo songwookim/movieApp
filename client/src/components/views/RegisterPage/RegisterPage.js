@@ -38,12 +38,14 @@ function RegisterPage(props) {
         }
         dispatch(registerUser(body)) 
             .then(res => {
-            if(res.payload.loginSuccess) {
-                props.history.push('/')
-            } else {
-                alert('Error');
-            }
-        });
+                //successs
+                if(res.payload.success) {
+                    alert('sign up complete!')
+                    props.history.push('/login')
+                } else {
+                    alert('Failed to sign up');
+                }
+            });
     }
     return (
         <div style={{ display: 'flex', justifyContent: "center", alignItems: 'center', width: '100%', height: '100vh'}}>

@@ -1,6 +1,5 @@
-// 여기가 store인듯? reducers갖고 있으니까
 import {
-    LOGIN_USER
+    LOGIN_USER, REGISTER_USER
 } from "../_actions/types"
 
 export default function(state ={}, action) {
@@ -10,8 +9,10 @@ export default function(state ={}, action) {
             // (previousState, action) => nextState
             // payload를 loginSuccess에다 넘김
             return {...state, loginSuccess: action.payload};
-            break;
-    
+        
+        case REGISTER_USER:
+            return {...state, register: action.payload};
+
         default:
             return state;
     }

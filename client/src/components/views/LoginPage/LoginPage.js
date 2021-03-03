@@ -30,6 +30,7 @@ function LoginPage(props) {
         dispatch(loginUser(body))                      //const dispatch = useDispatch(); 
             // return {...state, loginSuccess: action.payload}; 
             .then(res => {
+                console.log(res)
             if(res.payload.loginSuccess) {
                 //리액트의 페이지 이동 방법
                 props.history.push('/')
