@@ -1,0 +1,77 @@
+[33mcommit 1b3ba6935ba7750380e867e7620e7f6997db0793[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: songwoo <thddn191@gmail.com>
+Date:   Wed Mar 3 19:33:49 2021 +0900
+
+    ~lesson34 Auth(HOC) setting
+
+[33mcommit 0cc48547e575be1b1d4b3eac9fee773970b645be[m
+Author: songwoo <thddn191@gmail.com>
+Date:   Wed Mar 3 16:51:43 2021 +0900
+
+    lesson32 register page
+
+[33mcommit 092e55c2dfd61db993bbfaec71f21bf0e7f75e94[m
+Author: songwoo <thddn191@gmail.com>
+Date:   Wed Mar 3 12:05:14 2021 +0900
+
+    ~lesson30 login Page, little bit of register
+
+[33mcommit 9e15fc2844872576e47a790bab62c790b10570f5[m
+Author: songwoo <thddn191@gmail.com>
+Date:   Wed Mar 3 02:13:23 2021 +0900
+
+    ~lesson28 concurrently, asnt, redux setting
+
+[33mcommit c09e087e2d0750bf664e04ee2f44cff31bc97d5b[m
+Author: songwoo <thddn191@gmail.com>
+Date:   Wed Mar 3 02:12:38 2021 +0900
+
+    ~lesson28 concurrently, asnt, redux setting
+
+[33mcommit 406ef56be83716b15902a28736cb2bcd29a535d1[m
+Author: songwoo <thddn191@gmail.com>
+Date:   Tue Mar 2 03:42:50 2021 +0900
+
+    ~lesson23 Axios and CORPS control with Proxy
+
+[33mcommit c5bec7857b0a55f6310c66d70bdd9c2091971de0[m
+Author: songwoo <thddn191@gmail.com>
+Date:   Tue Mar 2 02:20:44 2021 +0900
+
+    ~lessson21 React-Router-DOM
+
+[33mcommit e85d605d50d67ab22993ac223ca4a04831e60f06[m
+Author: songwoo <thddn191@gmail.com>
+Date:   Sat Feb 27 04:10:04 2021 +0900
+
+    lesson13 logout
+
+[33mcommit 36cc58ff3a38afc0b7e38ea2952bb8f2700c8df1[m
+Author: songwoo <thddn191@gmail.com>
+Date:   Sat Feb 27 03:01:35 2021 +0900
+
+    ~lesson12 login with jsonwebtoken
+
+[33mcommit 7f99172342138c548807c82d4156559adc980dde[m
+Author: songwoo <thddn191@gmail.com>
+Date:   Fri Feb 26 03:42:53 2021 +0900
+
+    ~lesson9 password hashing with Bcrypt
+
+[33mcommit 579333099a68d55775d1a733a2d36e07caab4701[m
+Author: songwoo <thddn191@gmail.com>
+Date:   Thu Feb 25 02:58:24 2021 +0900
+
+    lesson 7
+
+[33mcommit 7d84c8de505224674f012d0fe870ed310e1464e3[m
+Author: songwoo <thddn191@gmail.com>
+Date:   Thu Feb 25 01:58:40 2021 +0900
+
+    ~ lesson 6 practice
+
+[33mcommit 92da747175f37837f7e0eac5a2cc9e0466f310ca[m
+Author: songwoo <thddn191@gmail.com>
+Date:   Fri Feb 19 17:35:08 2021 +0900
+
+    first uploaded to repository
