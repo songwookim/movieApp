@@ -1,4 +1,3 @@
-import { urlencoded } from "body-parser";
 import React from "react";
 
 function MainImage(props) {

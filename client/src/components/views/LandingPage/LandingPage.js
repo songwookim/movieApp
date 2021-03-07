@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
-import { API_URL, API_KEY, IMAGE_BASE_URL } from "../../../Config.js";
+import { API_URL, API_KEY, IMAGE_BASE_URL } from "../../Config.js";
 import MainImage from "./Sections/MainImage";
 
 import GridCards from "../commons/GridCards";
@@ -19,7 +19,7 @@ function LandingPage() {
   useEffect(() => {
     const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
     fetchMovies(endpoint);
-  }, []);
+  });
 
   //영화DB 받아오기
   const fetchMovies = (endpoint) => {
