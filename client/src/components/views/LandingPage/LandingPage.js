@@ -12,19 +12,31 @@ function LandingPage() {
   const [Movies, setMovies] = useState([]);
   // 가장 인기있는 로고 state관리 + props로 넘기기
   const [MainMovieImage, setMainMovieImage] = useState(null);
+  // state에 현재 페이지 수 기록
+  const [CurrentPage, setCurrentPage] = useState(0);
+
   //API정보 갖고 오기
   useEffect(() => {
     const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
-
-    //영화DB 받아오기
-    fetch(endpoint)
-      .then((res) => res.json())
-      .then((res) => {
-        //state에 저장
-        setMovies(res.results);
-        setMainMovieImage(res.results[0]);
-      });
+    fetchMovies(endpoint);
   }, []);
+
+  //영화DB 받아오기
+  const fetchMovies = (endpoint) => {
+    fetch(endpoint)
+      .then(res => res.json())
+      .then(res => {
+        //state에 저장
+        setMovies([...Movies, ...res.results]);
+        setMainMovieImage(res.results[0]);
+        setCurrentPage(res.page);
+      });
+  };
+
+  const loadMoreItems = () => {
+    const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${CurrentPage +1}`;
+    fetchMovies(endpoint);
+  };
 
   return (
     <div style={{ width: "100%", margin: "0" }}>
@@ -60,7 +72,7 @@ function LandingPage() {
       </div>
 
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <button>Load More</button>
+        <button onClick={loadMoreItems}>Load More</button>
       </div>
     </div>
   );
