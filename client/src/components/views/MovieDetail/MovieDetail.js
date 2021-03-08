@@ -7,6 +7,7 @@ import MovieInfo from "./Sections/MovieInfo";
 import GridCards from "../commons/GridCards";
 import {Row} from 'antd';
 
+import Favorite from './Sections/Favorite';
 // rfce + enter
 function MovieDetail(props) {
   const [Movie, setMovie] = useState([]);
@@ -32,7 +33,6 @@ function MovieDetail(props) {
   });
 
   const onCastHandler = () => {
-    console.log(ActorToggle)
     setActorToggle(!ActorToggle);
   };
   return (
@@ -46,8 +46,14 @@ function MovieDetail(props) {
 
       {/* Body  */}
       <div style={{ width: "85%", margin: "1rem auto" }}>
+
+        <div style={{ display: 'flex', justifyContent: 'flex-end'}}>
+          {/* 로그인 했을 때 유저ID를 로컬저장소에 저장했기에 여기에 접근해서 갖고올 수 있다. */}
+          <Favorite movieInfo={Movie} movieId={movieId} userFrom={localStorage.getItem('userId')}/>
+        </div>
+
         {/* Movie info */}
-        <MovieInfo movie={Movie} />
+        <MovieInfo movie={Movie}/>
         <br />
 
         <div
@@ -65,7 +71,7 @@ function MovieDetail(props) {
                     cast.profile_path
                       ? `${IMAGE_BASE_URL}w500${cast.profile_path}`
                       : null
-                  }
+                  } 
                   actorName={cast.name}
                 />
               </React.Fragment>
