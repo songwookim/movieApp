@@ -1,40 +1,48 @@
 import axios from 'axios';
 import {
-    LOGIN_USER, REGISTER_USER, AUTH_USER
-} from "./types";
-import { USER_SERVER} from '../components/Config.js'
+    LOGIN_USER,
+    REGISTER_USER,
+    AUTH_USER,
+    LOGOUT_USER,
+} from './types';
+import { USER_SERVER } from '../components/Config.js';
 
-//데이터의 Passwrod, email을 파라미더로 받기
-export function loginUser(dataToSubmit) {
-    //400 : not found / 404 : bad request
-    const req = axios.post(`${USER_SERVER}/login`, dataToSubmit)
-    //post 방식으로 날린다음 req에 저장함.
-       .then(res=> res.data)
-
-    //Reducer에 저장함.
-    return {
-        type: LOGIN_USER,
-        payload: req
-    }
-}
-
-export function registerUser(dataToSubmit) {
-    const req = axios.post(`${USER_SERVER}/register`, dataToSubmit)
-      .then(res=> res.data)
-
+export function registerUser(dataToSubmit){
+    const request = axios.post(`${USER_SERVER}/register`,dataToSubmit)
+        .then(response => response.data);
+    
     return {
         type: REGISTER_USER,
-        payload: req
+        payload: request
     }
 }
 
-//get 메소드니까 인자는 필요 X
-export function auth() {
-    const req = axios.get(`${USER_SERVER}/auth`)
-     .then(res=> res.data)
+export function loginUser(dataToSubmit){
+    const request = axios.post(`${USER_SERVER}/login`,dataToSubmit)
+                .then(response => response.data);
+
+    return {
+        type: LOGIN_USER,
+        payload: request
+    }
+}
+
+export function auth(){
+    const request = axios.get(`${USER_SERVER}/auth`)
+    .then(response => response.data);
 
     return {
         type: AUTH_USER,
-        payload: req
+        payload: request
+    }
+}
+
+export function logoutUser(){
+    const request = axios.get(`${USER_SERVER}/logout`)
+    .then(response => response.data);
+
+    return {
+        type: LOGOUT_USER,
+        payload: request
     }
 }

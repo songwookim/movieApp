@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { withRouter } from "react-router-dom";
 import { API_URL, API_KEY, IMAGE_BASE_URL } from "../../Config.js";
 import MainImage from "./Sections/MainImage";
 
@@ -54,7 +53,6 @@ function LandingPage() {
         <hr />
 
 
-        {/* 이미지 사이 여백 주기 */}
         <Row gutter={[16, 16]}>
           {Movies &&
             Movies.map((movie, index) => (
