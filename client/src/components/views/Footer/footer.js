@@ -1,11 +1,15 @@
 import React from 'react'
 
-function footer() {
+function Footer() {
     return (
-        <div>
-            footer
+        <div style={{
+            height: '80px', display: 'flex',
+            flexDirection: 'column', alignItems: 'center',
+            justifyContent: 'center', fontSize:'1rem'
+        }}>
+           <p> Happy Coding</p>
         </div>
     )
 }
 
-export default footer
+export default Footer

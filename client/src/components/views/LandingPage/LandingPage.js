@@ -52,6 +52,8 @@ function LandingPage() {
       <div style={{ width: "85%", margin: "1rem auto" }}>
         <h2>Movies by latest</h2>
         <hr />
+
+
         {/* 이미지 사이 여백 주기 */}
         <Row gutter={[16, 16]}>
           {Movies &&
@@ -79,4 +81,4 @@ function LandingPage() {
   );
 }
 
-export default withRouter(LandingPage);
+export default LandingPage;
