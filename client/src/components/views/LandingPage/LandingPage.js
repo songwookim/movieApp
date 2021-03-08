@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { API_URL, API_KEY, IMAGE_BASE_URL } from "../../Config.js";
 import MainImage from "./Sections/MainImage";
-
+import axios from 'axios';
 import GridCards from "../commons/GridCards";
 import { Row } from "antd";
 
@@ -17,8 +17,14 @@ function LandingPage() {
   //API정보 갖고 오기
   useEffect(() => {
     const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
-    fetchMovies(endpoint);
-  });
+    axios.get(endpoint)
+      .then((res) => {
+        setMainMovieImage(res.data.results[0]);
+        setMovies([...Movies, ...res.data.results]);
+        setCurrentPage(res.data.page);
+      })
+        .catch(err => console.log(err))
+  }, [])
 
   //영화DB 받아오기
   const fetchMovies = (endpoint) => {
@@ -27,7 +33,6 @@ function LandingPage() {
       .then(res => {
         //state에 저장
         setMovies([...Movies, ...res.results]);
-        setMainMovieImage(res.results[0]);
         setCurrentPage(res.page);
       });
   };
