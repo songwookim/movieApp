@@ -21,7 +21,7 @@ function MovieDetail(props) {
   useEffect(() => {
     let endpointInfo = `${API_URL}movie/${movieId}?api_key=${API_KEY}&language=en-US`;
     fetchDetailInfo(endpointInfo);
-  });
+  }, []);
 
   const fetchDetailInfo = (endpoint) => {
     fetch(endpoint)
