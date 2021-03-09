@@ -1,4 +1,5 @@
 const express = require("express");
+// expresss 모듈을 node_modules로 부터 갖고 온다.
 const app = express();
 const path = require("path");
 const cors = require('cors')

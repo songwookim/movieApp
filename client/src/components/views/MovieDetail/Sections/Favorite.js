@@ -27,7 +27,7 @@ function Favorite(props) {
         alert("숫자 정보를 가져오는데 실패했습니다.");
       }
       setFavoriteNumber(res.data.FavoritdNumber)
-    });
+    }, []);
 
     Axios.post("/api/favorite/favorited", variables).then((res) => {
       if (!res.data.success) {
