@@ -29,7 +29,7 @@ function MovieDetail(props) {
       .then((res) => {
         setCasts(res.cast);
       });
-  });
+  }, []);
 
   const onCastHandler = () => {
     console.log(ActorToggle)
