@@ -34,7 +34,6 @@ function MovieDetail(props) {
   }, []);
 
   const onCastHandler = () => {
-    console.log(ActorToggle)
     setActorToggle(!ActorToggle);
   };
   return (

@@ -120,7 +120,7 @@ app.get('/api/users/logout', auth, (req, res) => {
 
 // const cors = require('cors');
 // app.use(cors());
-app.use('/api/favorite/', require('./routes/favorite'));
+app.use('/api/favorite/', require('./routes/favorites'));
 
 
 const port = 5000;

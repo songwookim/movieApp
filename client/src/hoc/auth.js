@@ -14,8 +14,6 @@ export default function (SpecificComponent, option, adminRoute = null) {
 
     useEffect(() => {
       dispatch(auth()).then((res) => {
-        // console.log(res.payload)
-        // console.log(option)
         // 로그인 X 상태에서
         if (!res.payload.isAuth) {
           //only login페이지 요청 받았을 때
