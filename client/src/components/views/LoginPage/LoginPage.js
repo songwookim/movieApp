@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {loginUser} from '../../../_actions/user_action';
 import {withRouter} from 'react-router-dom';
+import {Button} from 'antd'
 
 function LoginPage(props) {
     const dispatch = useDispatch();   
@@ -20,6 +21,7 @@ function LoginPage(props) {
     }
     //버튼을 눌렀을 때 작동하는 메소드
     const onSubmitHandler = (event) => {
+        console.log(1)
         //이벤트 일어날 때마다 새로고침 되는 거 방지
         event.preventDefault();
         // state안에 서버에 보내고자 하는 값들이 있음(Password, state)
@@ -36,12 +38,15 @@ function LoginPage(props) {
                 //리액트의 페이지 이동 방법
                 props.history.push('/')
             } else {
-                alert('Error');
+                alert(res.payload.message);
             }
         });
     }
+    const onRegitserHandler = () => {
+        props.history.push('/register');
+    }
     return (
-        <div style={{ display: 'flex', justifyContent: "center", alignItems: 'center', width: '100%', height: '100vh'}}>
+        <div style={{ display: 'flex', justifyContent: "center", alignItems: 'center', width: '100%', height: '100vh', flexDirection: 'column'}}>
             <form style={{ display: 'flex', flexDirection: 'column' }}
                 onSubmit={onSubmitHandler}>
                <label>Email</label>
@@ -49,10 +54,13 @@ function LoginPage(props) {
                <label>Password</label>
                <input type="Password" value={Password} onChange={onPasswordHandler}/>
                <br />
-               <button>
+               <Button htmlType="submit">
                    Login
-                </button> 
+                </Button> 
             </form>
+            <Button onClick={onRegitserHandler} style={{marginTop: '10px'}} >
+                Register
+            </Button>
         </div>
     )
 }

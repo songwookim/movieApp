@@ -6,6 +6,7 @@ import MainImage from "./Sections/MainImage";
 import GridCards from "../commons/GridCards";
 import { Row,Button } from "antd";
 import NavBar from "../NavBar/NavBar.js";
+import axios from "axios";
 
 function LandingPage() {
   // 많은 정보들을 배열에 넣어야 하므로 []
@@ -19,6 +20,7 @@ function LandingPage() {
   //API정보 갖고 오기
   useEffect(() => {
     const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+    axios.get(endpoint).then(res => setMainMovieImage(res.data.results[0])).catch(err => console.err(err));
     fetchMovies(endpoint);
   },[]);
 
@@ -29,7 +31,6 @@ function LandingPage() {
       .then(res => {
         //state에 저장
         setMovies([...Movies, ...res.results]);
-        setMainMovieImage(res.results[0]);
         setCurrentPage(res.page);
       });
   };
