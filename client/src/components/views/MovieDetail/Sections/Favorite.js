@@ -24,14 +24,11 @@ function Favorite(props) {
 
     Axios.post("/api/favorite/favoriteNumber", variables).then((res) => {
       if (!res.data.success) alert("Failed to get Number info");
-
-      console.log(res.data)
       setFavoriteNumber(res.data.favoriteNumber);
     });
 
     Axios.post("/api/favorite/favorited", variables).then((res) => {
       if (!res.data.success) alert("Failed to get info");
-
       setFavorited(res.data.favorited);
     });
   }, []);

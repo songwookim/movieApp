@@ -1,10 +1,9 @@
-import React from 'react'
+import React from 'react';
+import LeftMenu from './Sections/LeftMenu';
 
-function NavBar() {
+function NavBar(props) {
     return (
-        <div>
-            NavBar
-        </div>
+        <LeftMenu mode="inline"/>
     )
 }
 

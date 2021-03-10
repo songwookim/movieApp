@@ -4,7 +4,8 @@ import { API_URL, API_KEY, IMAGE_BASE_URL } from "../../Config.js";
 import MainImage from "./Sections/MainImage";
 
 import GridCards from "../commons/GridCards";
-import { Row } from "antd";
+import { Row,Button } from "antd";
+import NavBar from "../NavBar/NavBar.js";
 
 function LandingPage() {
   // 많은 정보들을 배열에 넣어야 하므로 []
@@ -39,7 +40,8 @@ function LandingPage() {
   };
 
   return (
-    <div style={{ width: "100%", margin: "0" }}>
+    <div style={{ width: "100%", margin: "0"}}>
+      <NavBar/>
       {/* backdrop_path는 console.log(res.results) 로 확인 */}
       {MainMovieImage && (
         <MainImage
@@ -73,7 +75,7 @@ function LandingPage() {
       </div>
 
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <button onClick={loadMoreItems}>Load More</button>
+        <Button onClick={loadMoreItems}>Load More</Button>
       </div>
     </div>
   );

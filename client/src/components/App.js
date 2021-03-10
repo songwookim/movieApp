@@ -11,6 +11,7 @@ import Auth from '../hoc/auth'
 
 import MovieDetail from './views/MovieDetail/MovieDetail';
 
+import FavoritePage from './views/FavoritePage/FavoritePage';
 function App() {
   return (
     <Router>
@@ -23,6 +24,8 @@ function App() {
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route exact path="/movie/:movieId" component={Auth(MovieDetail, null)} />
+          {/* 로긴 한 사람만 봐야하니까*/}
+          <Route exact path="/favorite" component={Auth(FavoritePage, true)} />
         </Switch>
       </div>
     </Router>

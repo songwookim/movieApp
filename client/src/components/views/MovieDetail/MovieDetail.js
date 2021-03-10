@@ -5,9 +5,10 @@ import MainImage from "../LandingPage/Sections/MainImage";
 import MovieInfo from "./Sections/MovieInfo";
 
 import GridCards from "../commons/GridCards";
-import {Row} from 'antd';
+import { Row, Button } from 'antd';
 
 import Favorite from "./Sections/Favorite";
+import NavBar from "../NavBar/NavBar";
 
 // rfce + enter
 function MovieDetail(props) {
@@ -33,12 +34,14 @@ function MovieDetail(props) {
       });
   }, []);
 
+  
   const onCastHandler = () => {
     setActorToggle(!ActorToggle);
   };
   return (
     <div>
       {/* Header */}
+      <NavBar />
       <MainImage
         image={`${IMAGE_BASE_URL}w1280${Movie.backdrop_path}`}
         title={Movie.original_title}
@@ -55,7 +58,7 @@ function MovieDetail(props) {
         <div
           style={{ display: "flex", justifyContent: "center", margin: "2rem" }}
         >
-          <button onClick={onCastHandler}> Toggle Actor View </button>
+          <Button onClick={onCastHandler}> Toggle Actor View </Button>
         </div>
 
         <Row gutter={[16, 16]}>
